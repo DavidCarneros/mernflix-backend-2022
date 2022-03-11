@@ -12,7 +12,9 @@ var app = express();
 
 var mongoose = require('mongoose');
 
-mongoose.connect("mongodb+srv://david:mSKh42NbveqrMkdM@cluster0.m8ejx.mongodb.net/mernflix?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+require('dotenv').config();
+
+mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("mymerndb connection suscessful"))
   .catch((err) => console.log(err));
 
