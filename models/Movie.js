@@ -1,6 +1,14 @@
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
+
+var CommentSchema = new Schema({
+    text: String,
+    username: String,
+    email: String,
+    addeddate: { type: Date, default: Date.now }
+});
+
 var MovieSchema = new Schema({
     country: String,
     director: String,
@@ -11,7 +19,8 @@ var MovieSchema = new Schema({
     title: String,
     trailer: String,
     imdbRating: String,
-    id: Number
+    id: Number,
+    comments: [CommentSchema],
 });
 
 module.exports = mongoose.model('Movie', MovieSchema);
